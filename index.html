@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shortest Path Visualization - By Yuval Moshe</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <header>
+            <h1>Shortest Path Visualization</h1>
+        </header>
+        <main>
+            <section id="block-type-container">
+                <div class="block-type-inner-container">
+                <button class="src-dest-button" id="source-node">Source Node</button>
+                <button class="src-dest-button" id="dest-node">Destination Node</button>
+                <button class="block-type-button" id="blocking-block">Add Blocks</button>                
+                <button class="block-type-button" id="random-maze">Create Random Maze</button>
+                <!-- <button class="block-type-button" id="resistance-block">Resistance Blocks</button>  -->
+                <button class="block-type-button" id="not-selected">Clean</button>
+                <button class="clear-all" id="not-selected">Clean All</button>                      
+                </div>
+                <button class="block-type-button" id="run">Run</button>
+            </section>
+            <div class = "message-container">
+                <div id="message"></div>
+            </div>
+            <div class="slidecontainer" id="maze-silder" type="hidden">
+                <div class="value-selection" id="value-selection-maze">550</div>
+                <div class="slidewraper">
+                <!-- <span id = "min-range">Min Resistance</span> -->
+                <input type="range" min="100" max="1000" value="550" class="slider" id="myRange-maze">
+              <!-- <span id = "max-range">Max Resistance</span> -->
+              </div>
+              <button id="create-maze">Create</button>
+            </div>
+            <div class="slidecontainer" id="resistance-silder" type="hidden">
+                <div class="value-selection" id="value-selection-resistance">50</div>
+                <div class="slidewraper">
+                <span id = "min-range">Min Resistance</span>
+                <input type="range" min="0" max="100" value="50" class="slider" id="myRange-resistance">
+              <span id = "max-range">Max Resistance</span>
+              </div>
+            </div>
+            <div class="chestboard"></div>
+            <h3>by <a href="https://github.com/Yuval-Moshe">Yuval Moshe</a></h3>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

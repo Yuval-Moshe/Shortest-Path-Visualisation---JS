@@ -1,0 +1,230 @@
+html {
+  font-family: Poppins;
+}
+header {
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 50px;
+  margin-top: 20px !important;
+  margin-bottom: 5px !important;
+  margin: auto;
+  text-align: center;
+}
+main {
+  margin-top: 10px;
+}
+h3 {
+  text-align: center;
+  margin: 0%;
+}
+
+a {
+  color: rgb(20, 100, 175);
+  text-decoration: none;
+}
+.chestboard {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  grid-auto-rows: minmax(25px, 25px);
+  width: 80%;
+}
+.square {
+  background-color: rgba(193, 214, 255, 0.7);
+  border: 1px solid white;
+}
+
+.square[type="hover"] {
+  background-color: rgba(175, 175, 175, 0.7);
+}
+
+.square[type="blocking-block"] {
+  background-color: rgba(66, 66, 66, 0.7);
+}
+
+.square[type="stalling-block"] {
+  background-color: rgba(211, 59, 59, 0.7);
+}
+
+.square[type="src"] {
+  background-color: rgba(200, 211, 42, 0.7);
+}
+
+.square[type="dest"] {
+  background-color: rgba(42, 211, 126, 0.7);
+}
+
+.square[type="path"] {
+  background-color: rgba(211, 42, 84, 0.7);
+}
+
+#block-type-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  justify-content: center;
+}
+#block-type-inner-container {
+  margin: auto;
+}
+
+.block-type-button {
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 30px;
+  width: 150px;
+  background-color: rgb(146, 146, 146);
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+}
+
+.src-dest-button {
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 30px;
+  width: 150px;
+  background-color: rgb(146, 146, 146);
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+}
+
+.clear-all {
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 30px;
+  width: 150px;
+  background-color: rgb(146, 146, 146);
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+}
+
+.block-type-button:hover,
+.clear-all:hover,
+.src-dest-button:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.slidecontainer[type="visible"] {
+  display: inline-grid;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  float: center;
+  justify-content: center;
+  row-gap: 0px;
+  align-items: center;
+}
+.slidecontainer[type="hidden"] {
+  display: none;
+}
+
+.value-selection {
+  margin: auto;
+  text-align: center;
+  height: 25px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+}
+#min-range {
+  margin-left: 10px;
+}
+
+/* .slider {
+  display: block;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 500px;
+  height: 10px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 200, 0, 0.5),
+    rgb(255, 0, 0)
+  );
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  display: block;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+} */
+.slider {
+  display: block;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 500px;
+  height: 10px;
+  background-color: rgb(146, 146, 146);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  display: block;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.slidewraper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 20px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  width: 800px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 15px;
+  background: #202020ee;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.block-type-button#run {
+  background-color: rgb(202, 0, 0);
+}
+.block-type-button#run:hover {
+  background-color: rgb(172, 2, 2);
+}
+
+#create-maze {
+  justify-content: center;
+  height: 25px;
+  margin: auto;
+  width: 80px;
+  border: none;
+  background-color: seagreen;
+  color: aliceblue;
+  font-size: 16px;
+}
+
+.message-container {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: red;
+  font-size: 18px;
+}
