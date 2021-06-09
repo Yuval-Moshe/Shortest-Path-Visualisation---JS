@@ -60,6 +60,9 @@ a {
 .square[type="path"] {
   background-color: rgba(211, 42, 84, 0.7);
 }
+.square[type="check"] {
+  background-color: rgba(219, 143, 1, 0.7);
+}
 
 #block-type-container {
   display: flex;
