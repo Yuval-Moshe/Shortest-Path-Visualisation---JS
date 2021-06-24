@@ -168,7 +168,7 @@ $(document).ready(function () {
                 $('#square' + path[i]).attr("type", "path");
             }
             if (path.length == 0) {
-                $("#message").html("There is not path between the selcted source and destination");
+                $("#message").html("There is no path between the selected source and destination");
             }
             else {
                 $("#message").html("Success!");
