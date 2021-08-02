@@ -1,1 +1,1 @@
-# Shortest-Path-Visualisation---JS
+# Pathfinding-algorithms-visualizer---JS
