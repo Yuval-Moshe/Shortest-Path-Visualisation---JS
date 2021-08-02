@@ -1,52 +1,138 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>BFS Visualization - By Yuval Moshe</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
+<html lang="en">
 
-    <body>
-        <header>
-            <h1>BFS Visualization</h1>
-        </header>
-        <main>
-            <section id="block-type-container">
-                <div class="block-type-inner-container">
-                <button class="src-dest-button" id="source-node">Source Node</button>
-                <button class="src-dest-button" id="dest-node">Destination Node</button>
-                <button class="block-type-button" id="blocking-block">Add Blocks</button>                
-                <button class="block-type-button" id="random-maze">Create Random Maze</button>
-                <!-- <button class="block-type-button" id="resistance-block">Resistance Blocks</button>  -->
-                <button class="block-type-button" id="not-selected">Clean</button>
-                <button class="clear-all" id="not-selected">Clean All</button>                      
-                </div>
-                <button class="block-type-button" id="run">Run</button>
-            </section>
-            <div class = "message-container">
-                <div id="message"></div>
-            </div>
-            <div class="slidecontainer" id="maze-silder" type="hidden">
-                <div class="value-selection" id="value-selection-maze">550</div>
-                <div class="slidewraper">
-                <!-- <span id = "min-range">Min Resistance</span> -->
-                <input type="range" min="100" max="1000" value="550" class="slider" id="myRange-maze">
-              <!-- <span id = "max-range">Max Resistance</span> -->
-              </div>
-              <button id="create-maze">Create</button>
-            </div>
-            <div class="slidecontainer" id="resistance-silder" type="hidden">
-                <div class="value-selection" id="value-selection-resistance">50</div>
-                <div class="slidewraper">
-                <span id = "min-range">Min Resistance</span>
-                <input type="range" min="0" max="100" value="50" class="slider" id="myRange-resistance">
-              <span id = "max-range">Max Resistance</span>
-              </div>
-            </div>
-            <div class="chestboard"></div>
-            <h3>by <a href="https://github.com/Yuval-Moshe">Yuval Moshe</a></h3>
-        </main>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinding Algorithms Visualizer - Yuval Moshe</title>
+    <script async type="module" src="js/node.js"></script>
+    <script async type="module" src="js/PriorityQ.js"></script>
+    <script defer type="module" src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/dc8602c069.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- <nav class="nav-bar">
+        <h1>Shortest Path Visualizer</h1>
+        <h2>by Yuval Moshe</h2>
+    </nav> -->
+    <div class="hero">
+        <h1>Pathfinding Algorithms Visualizer</h1>
+        <a class="github-top" href="https://github.com/Yuval-Moshe">by Yuval Moshe</a>
+    </div>
+    <main class="main-section">
+        <div class="options-bar">
+        <div class="button-cont">
+            <i class="fas fa-atom"></i>                        
+            <span class="option-button" id = "select-algo" >Change Algorithm
+                <ul class="algo-list">
+                <li class="algo-button" id="bfs">BFS</li>
+                <li class="algo-button" id="dfs">DFS</li>
+                <li class="algo-button" id="b-dijkstra">Bidirectional Dijkstra</li>
+                </ul>
+            </span>
+        </div>
+        <div class="button-cont">
+            <i class="far fa-flag"></i>
+            <button class="option-button" id = "select-src" >Select Source</button>
+        </div>
+        <div class="button-cont">
+            <i class="fas fa-flag-checkered"></i>            
+            <button class="option-button" id = "select-dest" >Select Destination</button>
+        </div>
+        <div class="button-cont">
+            <i class="fas fa-ban"></i>
+            <button class="option-button" id = "add-block" >Add Blocks</button>
+        </div>
+        <div class="button-cont">
+            <i class="fas fa-random"></i>
+            <button class="option-button" id = "random-maze" >Create Random Maze</button>
+        </div>
+        <div class="button-cont">
+            <i class="fas fa-broom"></i>
+            <button class="option-button" id = "clean-board" >Clean Board</button>
+        </div>
+        <div class="button-cont">
+            <button class="option-button" id = "visualize">
+                <i class="far fa-play-circle"></i>
+                <div class="visualize-cont">Visualize</div> 
+            </button>
+        </div>
+        </div>
+        <div class="grid-container">
+        </div>
+    </main>
+    <h3>Created By</h3>
+    <section class="bottom-sect">
+    <section class="about-me">
+        <div class="about-text">
+         <p class="subhead">It's time to meet</p>
+        <h1 class="full-name">Yuval Moshe</h1>
+        <p>2nd year B.SC student at Ariel University (GPA 93), with 2.5 years of expirience in the high tech
+            industry. Motivated fast-learner with a can-do approach.
+        </p>
+        <div class="bottons-container">
+        <form method="get" action="/docs/Yuval Moshe CV.pdf" class="contact-container">
+            <button class="cv">
+                <i class="fas fa-arrow-circle-down"></i>
+                <span class="button-text">Resume</span>
+            </button>
+        </form>
+        <form method="get" action="/docs/Grade Sheet.pdf" class="contact-container">
+            <button class="grade-sheet">
+                <i class="fas fa-arrow-circle-down"></i>
+                <span class="button-text">Grade Sheet</span>
+            </button>
+        </form>
+        <form method="get" action="/docs/Dean's List.pdf" class="contact-container">
+            <button class="deans-list">
+                <i class="fas fa-arrow-circle-down"></i>
+                <span class="button-text">Dean's List</span>
+            </button>
+        </form>
+    </div>
+        </div>
+        <div class="image-cont">
+        <svg class="home-blob" id="10015.io" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <mask id="mask0" mask-type="alpha">
+                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                        130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                        97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                        0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+                </mask>
+                <g mask="url(#mask0)">
+                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                        165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                        129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                        -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+                    <image class="home-blob-img" x='12' y='12' xlink:href="images/YuvalMoshe.jpg" />
+                </g>
+            </svg>
+        </div>
+        <ul class="contact-info">
+            <li class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span class="contact-text" id="email">yuval1929@gmail.com</span>
+            </li>
+            <li class="contact-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span class="contact-text">054-4626-873</span>
+            </li>
+            <li class="contact-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/Yuval-Moshe" class="contact-text">Yuval-Moshe</a>
+            </li>
+            <li class="contact-item">
+                <i class="fab fa-linkedin-in"></i>
+                <a href="https://www.linkedin.com/in/yuval-moshe-6a431a166/" class="contact-text">Yuval Moshe</a>
+            </li>
+        </ul>
+    </section>
+    </section>
+</body>
+
 </html>
