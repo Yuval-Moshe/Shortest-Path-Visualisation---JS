@@ -1,4 +1,4 @@
-async function visualizeBDijkstra(grid_array, srcIndex, destIndex) {
+async function visualizeBBFS(grid_array, srcIndex, destIndex) {
   const queueSrc = [];
   let prevSrc = [];
   const stateSrc = []; // 0 - White, 1 Gray, 2 Black
@@ -88,4 +88,4 @@ async function visualizeBDijkstra(grid_array, srcIndex, destIndex) {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-export default visualizeBDijkstra;
+export default visualizeBBFS;

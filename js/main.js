@@ -1,14 +1,14 @@
 import Node from "./node.js";
-import visualizeBFS from "./BFS.js";
-import visualizeDFS from "./DFS.js";
-import visualizeBDijkstra from "./B-Dijkstra.js";
+import visualizeBFS from "./algorithms/BFS.js";
+import visualizeDFS from "./algorithms/DFS.js";
+import visualizeBBFS from "./algorithms/B-BFS.js";
 
 const grid_array = [];
 var srcNode;
 var destNode;
 var mouseDown = false;
 var selectedButton = "select-src";
-var algo = "b-dijkstra";
+var algo = "bfs";
 
 const buildGrid = function () {
   const gridContinaer = document.querySelector(".grid-container");
@@ -180,12 +180,12 @@ const visualize = async function () {
         prev = result;
       });
       break;
-    case "b-dijkstra":
+    case "b-bfs":
       // await visualizeBFS(srcIndex, destIndex).then((result) => {
       //   prev = result;
       // });
       let cross;
-      await visualizeBDijkstra(grid_array, srcIndex, destIndex).then(
+      await visualizeBBFS(grid_array, srcIndex, destIndex).then(
         (result) => {
           cross = result[2];
           let pathReverse = reconstructPath(result[1], destIndex, cross);
