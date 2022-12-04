@@ -156,6 +156,7 @@ const visualize = async function () {
   document.querySelectorAll(".option-button").forEach((elem) => {
     elem.disabled = true;
   });
+  cleanBoardBeforeVisualization();
   const srcNodeDiv = document.querySelector(".src");
   const destNodeDiv = document.querySelector(".dest");
   const srcIndex = srcNodeDiv.id.substring(6);
@@ -185,17 +186,15 @@ const visualize = async function () {
       //   prev = result;
       // });
       let cross;
-      await visualizeBBFS(grid_array, srcIndex, destIndex).then(
-        (result) => {
-          cross = result[2];
-          let pathReverse = reconstructPath(result[1], destIndex, cross);
-          prev = result[0];
-          console.log("pathReves: " + pathReverse);
-          for (let i in pathReverse) {
-            prev[result[1][pathReverse[i]]] = pathReverse[i];
-          }
+      await visualizeBBFS(grid_array, srcIndex, destIndex).then((result) => {
+        cross = result[2];
+        let pathReverse = reconstructPath(result[1], destIndex, cross);
+        prev = result[0];
+        console.log("pathReves: " + pathReverse);
+        for (let i in pathReverse) {
+          prev[result[1][pathReverse[i]]] = pathReverse[i];
         }
-      );
+      });
       break;
   }
   console.log(prev);
@@ -248,6 +247,22 @@ const cleanBoard = function () {
   }
   srcNode = null;
   destNode = null;
+};
+
+const cleanBoardBeforeVisualization = function () {
+  for (let node in grid_array) {
+    const nodeid = grid_array[node].id;
+    const nodeDiv = document.querySelector("#square" + nodeid);
+    if (
+      nodeDiv.classList.contains("src") ||
+      nodeDiv.classList.contains("dest") ||
+      nodeDiv.classList.contains("block")
+    ) {
+      continue;
+    }
+    nodeDiv.classList = "square";
+    nodeDiv.setAttribute("type", "not-selected");
+  }
 };
 
 const cleanPathAndCheck = function () {
